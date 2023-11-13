@@ -16,25 +16,26 @@ function handleEnter() {
       this.classList.add("trigger-enter-active"),
     150
   );
+
   background.classList.add("open");
 
   const dropdown = this.querySelector(".dropdown");
   const dropdownCoords = dropdown.getBoundingClientRect();
-  const navCoords = nav.getBoundingClientRect();
 
   const coords = {
     height: dropdownCoords.height,
     width: dropdownCoords.width,
-    top: dropdownCoords.top - navCoords.top,
-    left: dropdownCoords.left - navCoords.left,
+    top: dropdownCoords.top,
+    left: dropdownCoords.left,
   };
 
-  background.style.setProperty("width", "300px");
-  background.style.setProperty("height", "500px");
+  background.style.setProperty("width", `${dropdownCoords.width}px`);
+  background.style.setProperty("height", `${dropdownCoords.height}px`);
   background.style.setProperty(
     "transform",
-    `translate(${coords.left}px,${coords.top}px)`
+    `translate(${coords.left}px, ${coords.top}px)`
   );
+  console.log(dropdown);
 }
 
 // when hovered out
